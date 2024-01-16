@@ -1,0 +1,12 @@
+class Agent(Employe):
+    def _init_(self, nom, dateNaissance, dateEmbauche, salaireBase, primeResponsabilite=0):
+        super()._init_(nom, dateNaissance, dateEmbauche, salaireBase)
+        self._primeResponsabilite = primeResponsabilite
+
+    def SalaireAPayer(self):
+        tauxIR = IR.getIR(self._salaireBase + self._primeResponsabilite) / 100
+        salaireNet = (self._salaireBase + self._primeResponsabilite) * (1 - tauxIR)
+        return salaireNet
+
+    def _str_(self):
+        return super()._str_() + f"-{self._primeResponsabilite}"
