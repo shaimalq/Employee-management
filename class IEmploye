@@ -1,0 +1,9 @@
+class IEmploye:
+    def Age(self):
+        pass
+
+    def Anciennete(self):
+        pass
+
+    def DateRetraite(self, ageRetraite):
+        pass
