@@ -1,0 +1,13 @@
+class Formateur(Employe):
+    def _init_(self, nom, dateNaissance, dateEmbauche, salaireBase, heureSup=0, remunerationHSup=70.00):
+        super()._init_(nom, dateNaissance, dateEmbauche, salaireBase)
+        self._heureSup = heureSup
+        self._remunerationHSup = remunerationHSup
+
+    def SalaireAPayer(self):
+        tauxIR = IR.getIR(self._salaireBase + self._heureSup * self._remunerationHSup) / 100
+        salaireNet = (self._salaireBase + self._heureSup * self._remunerationHSup) * (1 - tauxIR)
+        return salaireNet
+
+    def _str_(self):
+        return super()._str_() + f"-{self._heureSup}-{self._remunerationHSup}"
