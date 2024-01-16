@@ -1,0 +1,9 @@
+class IR:
+    _tranches = [0, 28000, 40000, 50000, 60000, 150000]
+    _tauxIR = [0, 12, 24, 34, 38, 40]
+
+    @staticmethod
+    def getIR(salaire):
+        for i in range(len(IR._tranches)):
+            if salaire <= IR._tranches[i]:
+                return IR._tauxIR[i]
