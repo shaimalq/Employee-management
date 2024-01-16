@@ -1,0 +1,33 @@
+
+class Employe:
+    _mtle = 0  # Assuming this is a static variable to keep track of the next available matricule
+
+    def _init_(self, nom, dateNaissance, dateEmbauche, salaireBase):
+        self._mtle = Employe._mtle
+        Employe._mtle += 1
+        self._nom = nom
+        self._dateNaissance = dateNaissance
+        self._dateEmbauche = dateEmbauche
+        self._salaireBase = salaireBase
+
+    @property
+    def DateEmbauche(self):
+        if (date.today() - self._dateNaissance).days < 16 * 365:
+            raise ValueError("Employee must be at least 16 years old at the time of hiring.")
+        return self._dateEmbauche
+
+    @property
+    def DateNaissance(self):
+        return self._dateNaissance
+
+    def SalaireAPayer(self):
+        pass
+
+    def _eq_(self, other):
+        return self._mtle == other._mtle
+
+    def _lt_(self, other):
+        return self._nom < other._nom
+
+    def _str_(self):
+        return f"{self._mtle}-{self._nom}-{self._dateNaissance}-{self._dateEmbauche}-{self._salaireBase}"
