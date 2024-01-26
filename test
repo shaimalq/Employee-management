@@ -1,0 +1,43 @@
+from IR import IR
+from Employe import Employe
+from Formateur import Formateur
+import datetime
+from Agent import Agent
+f1 = Formateur("lana",datetime.date(1997,11,20),datetime.date(2024,3,5),7000,4)
+print(f1._str_())
+a1 = Agent("hanaee",datetime.date(2000,1,2),datetime.date(2024,7,9),15000,2000)
+employes = [f1, a1]
+print("__menu__:")
+print("1  Afficher les employes")
+print("2  Ajouter")
+print("3  Supprimer")
+print("4 Modifie")
+print("5 Quitter")
+a = int(input("veuillez entrer votre choix : "))
+if a == 1 :
+    for i in employes :
+        print(i._str_())
+elif a == 2 :
+    employes.append(input("entrer l'emloye que vous voullez ajouter :"))  
+elif a == 3 :
+    p = int(input("entrer la matricule de l'emloyee que vous voulez ajouter : "))
+    for i in employes :
+        if i.mtl == p :
+            employes.remove(i)
+        else :
+            print("la mtl est inconnue!")
+elif a == 4 :
+    p = int(input("entrer la matricule de l'emloyee que vous voulez modifier : "))
+    for i in employes :
+        if i.mtl == p :
+            c = (input("entrer le champ que vous voullez modifier(en minuscule svp!) : "))
+            if c == "nom" :
+                i.nom = input("entrer le nouveau nom: ")
+            elif c == "date de naissance" :
+                i.dateNaissance = input("entrer la nouvelle date: ")
+            elif c == "date d'embauche" :
+                i.date = input("entrer la nouvellle date: ")
+            elif c == "salaire de  base" :
+                i.salaireBase = input("entrer le nouveau salaire")           
+        else :
+            print("la matricule est inconnue!")
